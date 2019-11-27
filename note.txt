@@ -1,0 +1,4 @@
+https://datascience.stackexchange.com/questions/25581/what-is-the-difference-between-countvectorizer-token-counts-and-tfidftransformer
+https://kavita-ganesan.com/tfidftransformer-tfidfvectorizer-usage-differences/#.Xd4q6ENw1hE
+https://machinelearningmastery.com/prepare-text-data-machine-learning-scikit-learn/
+
