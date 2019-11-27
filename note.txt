@@ -2,3 +2,11 @@ https://datascience.stackexchange.com/questions/25581/what-is-the-difference-bet
 https://kavita-ganesan.com/tfidftransformer-tfidfvectorizer-usage-differences/#.Xd4q6ENw1hE
 https://machinelearningmastery.com/prepare-text-data-machine-learning-scikit-learn/
 
+Data from:
+https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews/data
+
+
+pip installs:
+* sklearn
+* pandas
+* wordcloud
