@@ -43,6 +43,7 @@ Another problem with this encoding method is that the input can only be a single
 With one-hot encoding every unique value is turned into a binary feature. This means that every word in the dataset will be represented by a feature that can either be 0 (word not used) or 1 (word was used). This way all words in the text can be encoded which was what we needed.
 
 See below example:
+
 |                         | I | am | blue | Dan | is | red | and |
 |-------------------------|---|----|------|-----|----|-----|-----|
 | I am blue               | 1 | 1  | 1    | 0   | 0  | 0   | 0   |
