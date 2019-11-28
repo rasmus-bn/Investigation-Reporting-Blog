@@ -1,35 +1,19 @@
-# UFO-Blog
+# Text encoding for use in machine learning
 
-#### *  Abstract*
 
 ## Introduction
 
-The target audience for this post is software development students whom might not have dipped their toes in machine learning. I will therefore refrase some technical terms in order to ease the readability of the user. Despite me being a bit liberal 
-
-## Initiating problem statement
-
 In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or "AI" is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
-
-
-
-(Converting text into feature vectors.)
-
-
-
-
-## Narrowing (What to choose?)
 
 In my machine learning 
 [exam project](https://github.com/rasmus-bn/MLExamProject 'ML Exam Project')
 I performed sentiment analysis on workplace reviews created by employees at some of the worlds largest tech companies. The dataset contained text data written by the employee alongside with a rating from 1-5. We had to classify whether the rating was negative (1-3) or positive (4-5) based on the text written by the employee. We therefore needed to transform the data into numbers for our machine learning algorithm to understand.
 
-## Problem statement
-
 *Which method should I use to encode text data into a format that a machine learning alogrithm can understand?*
 
 ## First some technical terms
 
-Before diving into it I want to explain some words that I will be using.
+Before diving into it I want to explain some words that I will be using:
 
 * **Feature**: A feature is an input variable that the machine learning algorithm uses to calculate its output. Say you want a machine learning model be able to identify the age of a person based on the persons height and weight. In this case there are 2 features height and weight.
 
@@ -39,7 +23,7 @@ Before diving into it I want to explain some words that I will be using.
 
 Another note is that I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data.
 
-## The different methods
+## Methods for encoding text into features
 
 We mainly used 
 [scikit-learn](https://scikit-learn.org/stable/index.html# "scikit-learn home page") 
@@ -93,6 +77,9 @@ As shown in the example the more common words used in the dataset will be weight
 
 
 ### TF-idf vs Count experiment
+
+(To be continued)
+
 tfidf seems better for larger texts. for smaller texts the difference is not so great.
 
 However it is recommended by scikit-learn's own documentation
