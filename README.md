@@ -33,6 +33,10 @@ Before diving into it I want to explain some words that I will be using.
 
 * **Feature**: A feature is an input variable that the machine learning algorithm uses to calculate its output. Say you want a machine learning model be able to identify the age of a person based on the persons height and weight. In this case there are 2 features height and weight.
 
+* **Corpus**: A collection of texts.
+
+* **Document**: A specific text in a corpus.
+
 Another note is that I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data.
 
 ## The different methods
@@ -75,11 +79,23 @@ creates a feature for each unique value. However instead of just telling whether
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/CountVectorizer%20example.png "See 'CountVectorizer example.ipynb' in this repo")
 
+Using this method means that the algorithm would if a word occurs more than once in a text.
+
 ### TF-IDF
-explanation
+
+The CountVectorizer seemed like it had all the functionality that we needed however that was until we read about the [TfidfVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html "scikit-learn's TfidfVectorizer"). TF-IDF stands for [Term Frequency - Inverse Document Frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf "Wikipedia's explanation of TF-IDF"). Below is an example of what the TF-IDF does:
+
+* The word 'red' occurs many times in the entire datase. In one document 'red' occurs 3 times and gets the weight of '0.21'.
+
+* The word 'green' only occurs a few places in the dataset. However in this document 'green' occurs 3 times resulting in the weight of '0.75'
+
+As shown in the example the more common words used in the dataset will be weighted as less important than the more rare words. Similar to the CountVectorizer the TfidfVectorizer expresses the number of occurences of each word. However it will evaluate less common words to be more important than frequent words. This means that if many reviews both positives and negatives would mention the word 'workplace' then 'workplace' does not bring any specific meaning to the review. The TfidfVectorizer takes care of down prioritising those kind of words and this was the method we went with.
+
 
 ### TF-idf vs Count experiment
 tfidf seems better for larger texts. for smaller texts the difference is not so great.
+
+However it is recommended by scikit-learn's own documentation
 
 ## conclusion
 TFidf is great!
