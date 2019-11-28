@@ -1,6 +1,5 @@
 # Text encoding for use in machine learning
 
-
 ## Introduction
 
 In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or "AI" is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
@@ -73,59 +72,13 @@ The CountVectorizer seemed like it had all the functionality that we needed howe
 
 * The word 'green' only occurs a few places in the dataset. However in this document 'green' occurs 3 times resulting in the weight of '0.75'
 
-As shown in the example the more common words used in the dataset will be weighted as less important than the more rare words. Similar to the CountVectorizer the TfidfVectorizer expresses the number of occurences of each word. However it will evaluate less common words to be more important than frequent words. This means that if many reviews both positives and negatives would mention the word 'workplace' then 'workplace' does not bring any specific meaning to the review. The TfidfVectorizer takes care of down prioritising those kind of words and this was the method we went with.
-
-
-### TF-idf vs Count experiment
-
-(To be continued)
-
-tfidf seems better for larger texts. for smaller texts the difference is not so great.
-
-However it is recommended by scikit-learn's own documentation
+As shown in the example the more common words used in the dataset will be weighted as less important than the more rare words. Similar to the CountVectorizer the TfidfVectorizer expresses the number of occurences of each word. However it will evaluate less common words to be more important than frequent words. This means that if many reviews both positives and negatives would mention the word 'workplace' then 'workplace' does not bring any specific meaning to the review. The TfidfVectorizer takes care of down prioritising those kind of words and scikit-learn [reccommends](https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html "'Working With Text Data' guide") TfdifVectorizer over CountVecotizer when working with text data. This was also the method we went with.
 
 ## conclusion
-TFidf is great!
+TF-IDF is a great method for encoding text data to feed into a machine learning algorithm. It provides a score for each word, based on how many times the word occurs in a text and how rare that word is. Because of these functionalities I believe TF-IDF was the best of the proposed methods for encoding text data in our machine learning algorithm.
 
+## Follow-up reflection
 
-## Discussion
+Encoding the text data is only a small step of building the classification model. We had multiple data preprocessing steps that we went through such as word stemming, stopwords removal, removal of company names (to not be biased if a company name is mentioned) and other text cleanup. We also engineered some extra features such as word count, stopword count & frequency, text length in characters.
 
-(tfidf with stopwords?)
-
-why tfidf is good?
-
-stemming stopwords specific word removal
-
-
-
-
-
-
-
-## Problem statement
-
-Why remove stop words when using tfidf?
-Using tfidf with stopwords?
-Tfidf vs countvectoriser?
-
-How tfidf works and why we chose to use it?
-We chose tfidf but is it better?
-
-
-
-One of these to. Let me show that the theory holds up.
-
-
-
-
-RabbitMQ - Guide
-
-ML feature extraction on text
-
-
-TFIDF vecotorizer vs Count vecotrizer
-https://www.kaggle.com/c/quora-question-pairs/discussion/31273
-
-
-
-removing stopwords when using tfidf
+We used TF-IDF in our machine learning exam project and we managed to get a prediction accuracy of arround 80%. However this result was not credited alone to TF-IDF as many other factors were in place.
