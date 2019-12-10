@@ -2,15 +2,23 @@
 
 *Posted by Rasmus Nordbjærg at https://github.com/rasmus-bn/Investigation-Reporting-Blog on December 2019*
 
-***Artificial Intelligence algorithms doesn't understand raw text data. However the world is drowning in text data and Artificial Intelligence is our best tool for processing and analyzing large data quantities. Fortunately text data can be encoded into a format that are understandable by Artificial Intelligence. Encoding text data allows you to ride the wave of Artificial Intelligence in the ocean of text data.***
-
+***Artificial Intelligence algorithms doesn't understand raw text data. However the world is drowning in text data and Artificial Intelligence is our best tool for processing and analyzing large data quantities. Fortunately text data can be encoded into a format that are understandable by Artificial Intelligence. Encoding text data allows you to ride the wave of Artificial Intelligence in the expanding ocean of collected text data.***
 
 
 ## Introduction
 
 In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or artificial intelligence is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
 
-In my machine learning<sup>1</sup> I performed sentiment analysis on workplace reviews created by employees at some of the worlds largest tech companies. The dataset contained text data written by the employee alongside with a rating from 1-5. We had to classify whether the rating was negative (1-3) or positive (4-5) based on the text written by the employee. We therefore needed to transform the data into numbers for our machine learning algorithm to understand.
+Machine learning models work by calculating a result *y* from the input variable *X*. However a model can have multiple input and output variables. Input variables are called **features** and the collection of input variables for a machine learning model is called a **feature vector**.
+
+An example case of a machine learning model could be this: *The model should predict how much more time a pizza should stay in the oven before it is done. We know how long the pizza has already been in the oven and we know the oven temperature so these would be the features (input variables)*:
+* X<sub>1</sub> = time passed
+* X<sub>2</sub> = oven temperature
+
+*We want to predict how much time is left before we can the pizza out:*
+* y = time left
+
+The important thing to take away is that the model only understand *X*s and the *y*s and these variables can only be given numerical values. There exists multiple methods for encoding text data into numerical features and I want to compare some of these. In the end I want to answer the below question:
 
 *Which method should I use to encode text data into a format that a machine learning alogrithm can understand?*
 
@@ -80,13 +88,20 @@ We used TF-IDF in our machine learning exam project and we managed to get a pred
 
 ## References
 
-1. My machine learning exam project: https://github.com/rasmus-bn/MLExamProject 'ML Exam Project'
-2. scikit-learn home page: https://scikit-learn.org/stable/index.html#
-3. scikit-learn's LabelEncoder: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
-4. scikit-learn's OneHotEncoder: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
-5. scikit-learn's CountVectorizer: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
-6. scikit-learn's TfidfVectorizer: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
-7. Wikipedia's explanation of Term Frequency - Inverse Document Frequency (TF-IDF): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
-8. scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer: https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+1. My machine learning exam project (state of master branch 10/12-19): https://github.com/rasmus-bn/MLExamProject
 
-9. 
+2. scikit-learn home page (last read on 10/12-19): https://scikit-learn.org/stable/index.html#
+
+3. scikit-learn's LabelEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
+
+4. scikit-learn's OneHotEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+
+5. scikit-learn's CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
+
+6. scikit-learn's TfidfVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+
+7. Wikipedia's explanation of Term Frequency - Inverse Document Frequency (last read on 10/12-19): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
+8. scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+
+9. Wikipedia on Features in machine learning (last read on 10/12-19): https://en.wikipedia.org/wiki/Feature_(machine_learning)
