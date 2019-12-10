@@ -1,6 +1,10 @@
 # Text encoding for use in machine learning
 
-*Posted by Rasmus Nordbjærg on https://github.com/rasmus-bn/Investigation-Reporting-Blog*
+*Posted by Rasmus Nordbjærg at https://github.com/rasmus-bn/Investigation-Reporting-Blog on December 2019*
+
+***Artificial intelligence algorithms doesn't understand raw text data. The world is drowning in text data and articial intelligence is our best tool for processing and analyzing large data quantities. Fortunately text data can be encoded into a format that are understandable by artificial intelligence. Text data encoding allows you to ride the wave of artifical intelligence in the ocean of text data.***
+
+
 
 ## Introduction
 
