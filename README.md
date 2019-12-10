@@ -2,13 +2,13 @@
 
 *Posted by Rasmus Nordbjærg at https://github.com/rasmus-bn/Investigation-Reporting-Blog on December 2019*
 
-***Artificial intelligence algorithms doesn't understand raw text data. The world is drowning in text data and articial intelligence is our best tool for processing and analyzing large data quantities. Fortunately text data can be encoded into a format that are understandable by artificial intelligence. Text data encoding allows you to ride the wave of artifical intelligence in the ocean of text data.***
+***Artificial Intelligence algorithms doesn't understand raw text data. However the world is drowning in text data and Artificial Intelligence is our best tool for processing and analyzing large data quantities. Fortunately text data can be encoded into a format that are understandable by Artificial Intelligence. Encoding text data allows you to ride the wave of Artificial Intelligence in the ocean of text data.***
 
 
 
 ## Introduction
 
-In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or "AI" is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
+In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or artificial intelligence is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
 
 In my machine learning<sup>1</sup> I performed sentiment analysis on workplace reviews created by employees at some of the worlds largest tech companies. The dataset contained text data written by the employee alongside with a rating from 1-5. We had to classify whether the rating was negative (1-3) or positive (4-5) based on the text written by the employee. We therefore needed to transform the data into numbers for our machine learning algorithm to understand.
 
@@ -29,14 +29,6 @@ Another note is that I will only explain different methods for encoding data. I 
 ## Methods for encoding text into features
 
 We mainly used<sup>2</sup> so I want to go through some of the methods that scikit-learn has available to perform this task.
-
-#### Label encoding
-
-Label encoding means identifying all unique values of a specific feature in a dataset and assigning an integer number to that value. Ex. I have a feature called color. In the dataset I the only unique values are 'green', 'blue' and 'red'. The LabelEncoder<sup>3</sup> will then assign a number from 0-3 to each of the uniqe values: 0 = red, 1 = blue, 2 = green.
-
-The downside of this approach is that it implies that that the colors is a sort of range where red is the smallest value and green is the greatest. The machine lerning algorithm only gets the numbers so it are not able to destinguish between the colors.
-
-Another problem with this encoding method is that the input can only be a single word. However we were dealing with entire sentences so this method would not allow us to pass in the data.
 
 #### One-hot encoding
 
