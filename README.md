@@ -1,5 +1,7 @@
 # Text encoding for use in machine learning
 
+*Posted by Rasmus Nordbjærg on https://github.com/rasmus-bn/Investigation-Reporting-Blog*
+
 ## Introduction
 
 In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or "AI" is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
@@ -48,15 +50,20 @@ The increase of the number of features might pose some other issues but it gives
 
 The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother after one-hot encoding: "It was a bad movie", "It was a bad bad bad bad bad movie".
 
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png "See 'Encoding examples.ipynb' in the repo")
+
 #### Encoding based on occurence count
 
 Like one-hot encoding the CountVectorizer<sup>5</sup> creates a feature for each unique value. However instead of just telling whether the word is used in a sentece the CountVectorizer counts the number of occurences of the word. Below is a simple example of the CountVectorizer in use:
 
-![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/CountVectorizer%20example.png "See 'CountVectorizer example.ipynb' in this repo")
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count-based%20example.png "See 'Encoding examples.ipynb' in the repo")
 
 Using this method means that the algorithm would if a word occurs more than once in a text.
 
 #### TF-IDF
+
+
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20example.png "See 'Encoding examples.ipynb' in the repo")
 
 The CountVectorizer seemed like it had all the functionality that we needed however that was until we read about the TfidfVectorizer<sup>6</sup>. TF-IDF stands for Term Frequency - Inverse Document Frequency<sup>7</sup>. Below is an example of what the TF-IDF does:
 
