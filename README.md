@@ -34,11 +34,15 @@ Before diving into it I want to explain some words that I will be using:
 
 Another note is that I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data.
 
-## Methods for encoding text into features
+## Bag of Words
 
-We mainly used<sup>2</sup> so I want to go through some of the methods that scikit-learn has available to perform this task.
+In my machine learning exam project<sup>**</sup> I had to predict whether a review was positive or negative based on the written text of a user. This sort of analysis is called sentiment anelysis and I will base my explanations and evaluations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
 
-#### One-hot encoding
+I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and readability.
+
+#### Binary scoring method
+
+One-hot encoding in the context of text data means having one feature for every unique word in the dataset. If we have a dataset with texts that only have 
 
 With one-hot encoding every unique value is turned into a binary feature. This means that every word in the dataset will be represented by a feature that can either be 0 (word not used) or 1 (word was used). This way all words in the text can be encoded which was what we needed.
 
@@ -56,7 +60,7 @@ The limit of this method is that it does not take into account the number of occ
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png "See 'Encoding examples.ipynb' in the repo")
 
-#### Encoding based on occurence count
+#### Count based scoring
 
 Like one-hot encoding the CountVectorizer<sup>5</sup> creates a feature for each unique value. However instead of just telling whether the word is used in a sentece the CountVectorizer counts the number of occurences of the word. Below is a simple example of the CountVectorizer in use:
 
@@ -88,20 +92,24 @@ We used TF-IDF in our machine learning exam project and we managed to get a pred
 
 ## References
 
-1. My machine learning exam project (state of master branch 10/12-19): https://github.com/rasmus-bn/MLExamProject
+* My machine learning exam project (state of master branch 10/12-19): https://github.com/rasmus-bn/MLExamProject
 
-2. scikit-learn home page (last read on 10/12-19): https://scikit-learn.org/stable/index.html#
+* scikit-learn home page (last read on 10/12-19): https://scikit-learn.org/stable/index.html#
 
-3. scikit-learn's LabelEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
+* scikit-learn's LabelEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
 
-4. scikit-learn's OneHotEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+* scikit-learn's OneHotEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
 
-5. scikit-learn's CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
+* scikit-learn's CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
 
-6. scikit-learn's TfidfVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+* scikit-learn's TfidfVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
-7. Wikipedia's explanation of Term Frequency - Inverse Document Frequency (last read on 10/12-19): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+* Wikipedia's explanation of Term Frequency - Inverse Document Frequency (last read on 10/12-19): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
-8. scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+* scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 
-9. Wikipedia on Features in machine learning (last read on 10/12-19): https://en.wikipedia.org/wiki/Feature_(machine_learning)
+* Wikipedia on Features in machine learning (last read on 10/12-19): https://en.wikipedia.org/wiki/Feature_(machine_learning)
+
+* Wikipedia on one-hot https://en.wikipedia.org/wiki/One-hot
+
+* Bag of words - Jason Brownlee 09/10-19 (last read on 10/12-19) https://machinelearningmastery.com/gentle-introduction-bag-words-model/
