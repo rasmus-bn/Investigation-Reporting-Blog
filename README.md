@@ -34,16 +34,19 @@ Bag of Words only tracks what words are mentioned in the text and not in which o
 
 ### Binary scoring method
 
-With binary scoring<sup>5</sup> each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code. The string array *corpus* is the data set from which the features are defined 
+With binary scoring<sup>5</sup> each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code. The string array *corpus* is the data set from which the features are defined.
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
 The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really, really good movie".
 
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20duplicates.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20duplicates.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
+
 ### Count based scoring
 
-Instead of just telling whether the word is used in the text we could use count based scoring. This means that the numerical value given to a feature should be the number of occurences for the word occurs in the text. This is demonstrated in beelow image.
+Instead of just telling whether the word is used in the text we could use count based scoring. This means that the numerical value given to a feature should be the number of occurences for the word occurs in the text<sup>5</sup>. This is demonstrated in below image.
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count%20based%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count%20based%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
@@ -52,17 +55,14 @@ Using this method means that the encoding contains information of what words was
 
 ### TF-IDF
 
-
-*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
-
-The count based scoring seemed like it had all the functionality needed to perform sentiment analysis. However the scoring method called TF-IDF<sup>** guide</sup> adds just some extra nice functionality. TF-IDF stands for Term Frequency - Inverse Document Frequency<sup>** wiki</sup>. Instead of being based on occurence count the TF-IDF is based on the occurence frequency in the current text and the inverse frequency of the word in the entire dataset. This means that words that are rare in the dataset will be weighted higher than words that are very common. Below is an example of the TF-IDF does in use:
+The count based scoring seemed like it had all the functionality needed to perform sentiment analysis. However the scoring method called TF-IDF adds just some extra nice functionality. TF-IDF stands for Term Frequency - Inverse Document Frequency<sup>6</sup>. Instead of being based on occurence count the TF-IDF is based on the occurence frequency in the current text and the inverse frequency of the word in the entire dataset. This means that words that are rare in the dataset will be weighted higher than words that are very common<sup>5</sup>. Below is an example of the TF-IDF does in use:
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
 As shown in the example the more common words used like 'rose' and 'is' be weighted as less important than the more rare words like 'tulip'. 'tulip' is mentioned once in the text and has a score of 0.33 which is very close to the score of 'is' at 0.37 which is mentioned 3 times.
 
-This is useful in the case of sentiment analysis. If many positive and negative negative would mention a specific word the that word will have less significant meaning when trying to predict positive or negative. The TfidfVectorizer takes care of down-prioritising those kind of words. The machine learning library for python called scikit-learn<sup>** </sup> reccommends<sup>** </sup> TfdifVectorizer<sup>** </sup> over CountVecotizer<sup>** </sup> when working with text data. This was also the method we went with.
+This is useful in the case of sentiment analysis. If many positive and negative negative would mention a specific word the that word will have less significant meaning when trying to predict positive or negative. The TfidfVectorizer takes care of down-prioritising those kind of words. The machine learning library for python called scikit-learn reccommends<sup>7</sup> TfdifVectorizer<sup>8</sup> over CountVecotizer<sup>9</sup> when working with text data. This was also the method we went with.
 
 ## Conclusion
 Using Bag of Words way of encoding with TF-IDF scoring method is a great way to encode text data to feed into a machine learning model. It provides a score for each word, based on how many times the word occurs in a text and how rare that word is. This is great because the it helps sorts out the more significant words from the less.
@@ -71,7 +71,7 @@ If you need the ability to extract the original text from the encoded data the B
 
 ## Follow-up reflection
 
-Encoding the text data is only a small step of building the classification model. We had multiple data preprocessing steps that we went through such as word stemming, stopwords removal, removal of company names (to not be biased if a company name is mentioned) and other text cleanup. We also engineered some extra features such as word count, stopword count & frequency, text length in characters.
+Encoding the text data is only a small step of building the classification model. We had multiple data preprocessing steps that we went through such as word stemming, stopwords removal and other text cleanup. We also engineered some extra features such as word count, stopword count & frequency, text length in characters.
 
 We used TF-IDF in our machine learning exam project and we managed to get a prediction accuracy of arround 80%. However this result was not credited alone to TF-IDF as many other factors were in place.
 
@@ -86,24 +86,10 @@ We used TF-IDF in our machine learning exam project and we managed to get a pred
 
 5. Bag of words - Jason Brownlee 09/10-19 (last read on 10/12-19) https://machinelearningmastery.com/gentle-introduction-bag-words-model/
 
+6. Wikipedia's explanation of Term Frequency - Inverse Document Frequency (last read on 10/12-19): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
+7. scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 
+8. scikit-learn's TfidfVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
-* scikit-learn home page (last read on 10/12-19): https://scikit-learn.org/stable/index.html#
-
-* scikit-learn's LabelEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
-
-* scikit-learn's OneHotEncoder (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
-
-* scikit-learn's CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
-
-* scikit-learn's TfidfVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
-
-* Wikipedia's explanation of Term Frequency - Inverse Document Frequency (last read on 10/12-19): https://en.wikipedia.org/wiki/Tf%E2%80%93idf
-
-* scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
-
-
-* Wikipedia on one-hot https://en.wikipedia.org/wiki/One-hot
-
-
+9. scikit-learn's CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
