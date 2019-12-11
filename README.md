@@ -20,7 +20,7 @@ An example case of a machine learning model could be this: *The model should pre
 
 The important thing to take away is that the model only understand *X*s and the *y*s and these variables can only be given numerical values. There exists multiple methods for encoding text data into numerical features and I want to compare some of these. In the end I want to answer the below question:
 
-*Which method should I use to encode text data into a format that a machine learning alogrithm can understand?*
+*How can I encode text data so that a machine learning algorithm can understand the data?*
 
 ## First some technical terms
 
@@ -36,29 +36,22 @@ Another note is that I will only explain different methods for encoding data. I 
 
 ## Bag of Words
 
-In my machine learning exam project<sup>**</sup> I had to predict whether a review was positive or negative based on the written text of a user. This sort of analysis is called sentiment anelysis and I will base my explanations and evaluations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
+In my machine learning exam project<sup>**</sup> I had to predict whether a review was positive or negative based on the written text of the reviewer. This sort of analysis is called sentiment anelysis and I will base my explanations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
 
-I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and readability.
+Bag of Words means having one feature for every unique word in the dataset. If a dataset only contains 3 unique words the input for the machine learning model would consist of three features. In order to represent a text the features would be assigned numerical values. A scoring method is used to calculate what the numerical value should be. I will got through the three scoring methods that we considered in my machine learning project.
+
+Bag of Words only tracks what words are mentioned in the text and not in which order the words occured. This means that the original text can not be recovered from the encoded data. However in the use case of sentiment analysis the purpose is to predict whether the inputted text is negative or positive so we don't need the ability to recover the text from the encoded representation.
+
+***I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and readability.***
 
 #### Binary scoring method
 
-One-hot encoding in the context of text data means having one feature for every unique word in the dataset. If we have a dataset with texts that only have 
-
-With one-hot encoding every unique value is turned into a binary feature. This means that every word in the dataset will be represented by a feature that can either be 0 (word not used) or 1 (word was used). This way all words in the text can be encoded which was what we needed.
-
-See below example:
-
-|                         | I | am | blue | Dan | is | red | and |
-|-------------------------|---|----|------|-----|----|-----|-----|
-| I am blue               | 1 | 1  | 1    | 0   | 0  | 0   | 0   |
-| Dan is red              | 0 | 0  | 0    | 1   | 1  | 1   | 0   |
-| I am red and Dan is red | 1 | 1  | 0    | 1   | 1  | 1   | 1   |
-
-The increase of the number of features might pose some other issues but it gives the ability to encode all words in a text which was what we needed. Label encoding did not provide this functionality. Besides the OneHotEncoder<sup>4</sup> also allows limiting the number of features produced.
-
-The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother after one-hot encoding: "It was a bad movie", "It was a bad bad bad bad bad movie".
+With binary scoring each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code.
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
+
+The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really really good movie".
 
 #### Count based scoring
 
@@ -113,3 +106,5 @@ We used TF-IDF in our machine learning exam project and we managed to get a pred
 * Wikipedia on one-hot https://en.wikipedia.org/wiki/One-hot
 
 * Bag of words - Jason Brownlee 09/10-19 (last read on 10/12-19) https://machinelearningmastery.com/gentle-introduction-bag-words-model/
+
+* Wikipedia on Bag of Words (last read on 10/12-19): https://en.wikipedia.org/wiki/Bag-of-words_model
