@@ -24,6 +24,11 @@ The important thing to take away is that the model only understand *X*s and the 
 
 Due to the scope of the blog I will only explain different ways of using Bag of Words. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and easy readability.
 
+
+<br/>
+<br/>
+<br/>
+
 ## Bag of Words
 
 In my machine learning exam project<sup>3</sup> I had to predict whether a review was positive or negative based on the written text of the reviewer. This sort of analysis is called sentiment anelysis and I will base my explanations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
@@ -38,6 +43,16 @@ With binary scoring<sup>5</sup> each method can have either 0 or 1. If a feature
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really, really good movie".
 
@@ -74,6 +89,10 @@ If you need the ability to extract the original text from the encoded data the B
 Encoding the text data is only a small step of building the classification model. We had multiple data preprocessing steps that we went through such as word stemming, stopwords removal and other text cleanup. We also engineered some extra features such as word count, stopword count & frequency, text length in characters.
 
 We used TF-IDF in our machine learning exam project and we managed to get a prediction accuracy of arround 80%. However this result was not credited alone to TF-IDF as many other factors were in place.
+
+<br/>
+<br/>
+<br/>
 
 ## References
 1. Wikipedia on Global Internet usage (last read on 10/12-19): https://en.wikipedia.org/wiki/Global_Internet_usage
