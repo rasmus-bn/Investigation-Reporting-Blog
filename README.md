@@ -7,9 +7,9 @@
 
 ## Introduction
 
-In a world with a continously rising amout of data it is essential to be able to automate the processing of the data. Machine learning or artificial intelligence is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
+In a world with a continously rising amout of data<sup>1</sup> it is essential to be able to automate the processing of the data. Machine learning or artificial intelligence is a great tool for analyzing large amounts of data. However the algorithms are based on math and can not be directly fed with images or text data. The algorithms only understands numbers so in order to use machine learning to process texts or images the data needs to be preprocessed.
 
-Machine learning models work by calculating a result *y* from the input variable *X*. However a model can have multiple input and output variables. Input variables are called **features** and the collection of input variables for a machine learning model is called a **feature vector**.
+Machine learning models work by calculating a result *y* from the input variable *X*. However a model can have multiple input and output variables. Input variables are called **features** and the collection of input variables for a machine learning model is called a **feature vector**<sup>2</sup>.
 
 An example case of a machine learning model could be this: *The model should predict how much more time a pizza should stay in the oven before it is done. We know how long the pizza has already been in the oven and we know the oven temperature so these would be the features (input variables)*:
 * X<sub>1</sub> = time passed
@@ -22,38 +22,26 @@ The important thing to take away is that the model only understand *X*s and the 
 
 *How can I encode text data so that a machine learning algorithm can understand the data?*
 
-## First some technical terms
-
-Before diving into it I want to explain some words that I will be using:
-
-* **Feature**: A feature is an input variable that the machine learning algorithm uses to calculate its output. Say you want a machine learning model be able to identify the age of a person based on the persons height and weight. In this case there are 2 features height and weight.
-
-* **Corpus**: A collection of texts.
-
-* **Document**: A specific text in a corpus.
-
-Another note is that I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data.
+Due to the scope of the blog I will only explain different ways of using Bag of Words. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and easy readability.
 
 ## Bag of Words
 
-In my machine learning exam project<sup>**</sup> I had to predict whether a review was positive or negative based on the written text of the reviewer. This sort of analysis is called sentiment anelysis and I will base my explanations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
+In my machine learning exam project<sup>3</sup> I had to predict whether a review was positive or negative based on the written text of the reviewer. This sort of analysis is called sentiment anelysis and I will base my explanations on that kind of use case. So the input is a text that needs to be encoded into features and the ouput is a binary value: positive or negative.
 
-Bag of Words means having one feature for every unique word in the dataset. If a dataset only contains 3 unique words the input for the machine learning model would consist of three features. In order to represent a text the features would be assigned numerical values. A scoring method is used to calculate what the numerical value should be. I will got through the three scoring methods that we considered in my machine learning project.
+Bag of Words means having one feature for every unique word in the dataset<sup>4</sup>. If a dataset only contains 3 unique words the input for the machine learning model would consist of three features. In order to represent a text the features would be assigned numerical values. A scoring method is used to calculate what the numerical value should be. I will got through the three scoring methods that we considered in my machine learning project.
 
 Bag of Words only tracks what words are mentioned in the text and not in which order the words occured. This means that the original text can not be recovered from the encoded data. However in the use case of sentiment analysis the purpose is to predict whether the inputted text is negative or positive so we don't need the ability to recover the text from the encoded representation.
 
-***I will only explain different methods for encoding data. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and readability.***
+### Binary scoring method
 
-#### Binary scoring method
-
-With binary scoring each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code. The string array *corpus* is the data set from which the features are defined 
+With binary scoring<sup>5</sup> each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code. The string array *corpus* is the data set from which the features are defined 
 
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
 The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really, really good movie".
 
-#### Count based scoring
+### Count based scoring
 
 Instead of just telling whether the word is used in the text we could use count based scoring. This means that the numerical value given to a feature should be the number of occurences for the word occurs in the text. This is demonstrated in beelow image.
 
@@ -62,7 +50,7 @@ Instead of just telling whether the word is used in the text we could use count 
 
 Using this method means that the encoding contains information of what words was in the text and how many times they were used.
 
-#### TF-IDF
+### TF-IDF
 
 
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
@@ -88,8 +76,18 @@ Encoding the text data is only a small step of building the classification model
 We used TF-IDF in our machine learning exam project and we managed to get a prediction accuracy of arround 80%. However this result was not credited alone to TF-IDF as many other factors were in place.
 
 ## References
+1. Wikipedia on Global Internet usage (last read on 10/12-19): https://en.wikipedia.org/wiki/Global_Internet_usage
 
-* My machine learning exam project (state of master branch 10/12-19): https://github.com/rasmus-bn/MLExamProject
+2. Wikipedia on Features in machine learning (last read on 10/12-19): https://en.wikipedia.org/wiki/Feature_(machine_learning)
+
+3. My machine learning exam project (state of master branch 10/12-19): https://github.com/rasmus-bn/MLExamProject
+
+4. Wikipedia on Bag of Words (last read on 10/12-19): https://en.wikipedia.org/wiki/Bag-of-words_model
+
+5. Bag of words - Jason Brownlee 09/10-19 (last read on 10/12-19) https://machinelearningmastery.com/gentle-introduction-bag-words-model/
+
+
+
 
 * scikit-learn home page (last read on 10/12-19): https://scikit-learn.org/stable/index.html#
 
@@ -105,10 +103,7 @@ We used TF-IDF in our machine learning exam project and we managed to get a pred
 
 * scikit-learn's guide on working with text data recommending TFIDFVectorizer over CountVectorizer (last read on 10/12-19): https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 
-* Wikipedia on Features in machine learning (last read on 10/12-19): https://en.wikipedia.org/wiki/Feature_(machine_learning)
 
 * Wikipedia on one-hot https://en.wikipedia.org/wiki/One-hot
 
-* Bag of words - Jason Brownlee 09/10-19 (last read on 10/12-19) https://machinelearningmastery.com/gentle-introduction-bag-words-model/
 
-* Wikipedia on Bag of Words (last read on 10/12-19): https://en.wikipedia.org/wiki/Bag-of-words_model
