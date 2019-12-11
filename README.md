@@ -46,36 +46,40 @@ Bag of Words only tracks what words are mentioned in the text and not in which o
 
 #### Binary scoring method
 
-With binary scoring each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code.
+With binary scoring each method can have either 0 or 1. If a feature is given the value of 1 it means that the corresponding word exists the text and 0 means that it doesn't. Below is an image demonstrating this in python code. The string array *corpus* is the data set from which the features are defined 
 
-![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png "See 'Encoding examples.ipynb' in the repo")
-*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/One-Hot%20example.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
-The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really really good movie".
+The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really, really good movie".
 
 #### Count based scoring
 
-Like one-hot encoding the CountVectorizer<sup>5</sup> creates a feature for each unique value. However instead of just telling whether the word is used in a sentece the CountVectorizer counts the number of occurences of the word. Below is a simple example of the CountVectorizer in use:
+Instead of just telling whether the word is used in the text we could use count based scoring. This means that the numerical value given to a feature should be the number of occurences for the word occurs in the text. This is demonstrated in beelow image.
 
-![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count-based%20example.png "See 'Encoding examples.ipynb' in the repo")
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count%20based%20scoring.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Count%20based%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
-Using this method means that the algorithm would if a word occurs more than once in a text.
+Using this method means that the encoding contains information of what words was in the text and how many times they were used.
 
 #### TF-IDF
 
 
-![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20example.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
-The CountVectorizer seemed like it had all the functionality that we needed however that was until we read about the TfidfVectorizer<sup>6</sup>. TF-IDF stands for Term Frequency - Inverse Document Frequency<sup>7</sup>. Below is an example of what the TF-IDF does:
+The count based scoring seemed like it had all the functionality needed to perform sentiment analysis. However the scoring method called TF-IDF<sup>** guide</sup> adds just some extra nice functionality. TF-IDF stands for Term Frequency - Inverse Document Frequency<sup>** wiki</sup>. Instead of being based on occurence count the TF-IDF is based on the occurence frequency in the current text and the inverse frequency of the word in the entire dataset. This means that words that are rare in the dataset will be weighted higher than words that are very common. Below is an example of the TF-IDF does in use:
 
-* The word 'red' occurs many times in the entire datase. In one document 'red' occurs 3 times and gets the weight of '0.21'.
+![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png "See 'Encoding examples.ipynb' in the repo")
+*https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/TF-IDF%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
-* The word 'green' only occurs a few places in the dataset. However in this document 'green' occurs 3 times resulting in the weight of '0.75'
+As shown in the example the more common words used like 'rose' and 'is' be weighted as less important than the more rare words like 'tulip'. 'tulip' is mentioned once in the text and has a score of 0.33 which is very close to the score of 'is' at 0.37 which is mentioned 3 times.
 
-As shown in the example the more common words used in the dataset will be weighted as less important than the more rare words. Similar to the CountVectorizer the TfidfVectorizer expresses the number of occurences of each word. However it will evaluate less common words to be more important than frequent words. This means that if many reviews both positives and negatives would mention the word 'workplace' then 'workplace' does not bring any specific meaning to the review. The TfidfVectorizer takes care of down prioritising those kind of words and scikit-learn reccommends<sup>8</sup> TfdifVectorizer over CountVecotizer when working with text data. This was also the method we went with.
+This is useful in the case of sentiment analysis. If many positive and negative negative would mention a specific word the that word will have less significant meaning when trying to predict positive or negative. The TfidfVectorizer takes care of down-prioritising those kind of words. The machine learning library for python called scikit-learn<sup>** </sup> reccommends<sup>** </sup> TfdifVectorizer<sup>** </sup> over CountVecotizer<sup>** </sup> when working with text data. This was also the method we went with.
 
 ## Conclusion
-TF-IDF is a great method for encoding text data to feed into a machine learning algorithm. It provides a score for each word, based on how many times the word occurs in a text and how rare that word is. Because of these functionalities I believe TF-IDF was the best of the proposed methods for encoding text data in our machine learning algorithm.
+Using Bag of Words way of encoding with TF-IDF scoring method is a great way to encode text data to feed into a machine learning model. It provides a score for each word, based on how many times the word occurs in a text and how rare that word is. This is great because the it helps sorts out the more significant words from the less.
+
+If you need the ability to extract the original text from the encoded data the Bag of Words is not the tool for you. However in the use case of sentiment analysis where the predicted result is whether or not the text was positive or negative Bag of Word with TF-IDF is great way to encode the data.
 
 ## Follow-up reflection
 
