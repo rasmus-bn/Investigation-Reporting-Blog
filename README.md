@@ -25,9 +25,6 @@ The important thing to take away is that the model only understand *X*s and the 
 Due to the scope of the blog I will only explain different ways of using Bag of Words. I will therefore not dive into word stemming, removal of stopwords or other ways of preparing the text data. I will also leave out exlpaining n-grams for the sake of simplicity and easy readability.
 
 
-<br/>
-<br/>
-<br/>
 
 ## Bag of Words
 
@@ -44,14 +41,6 @@ With binary scoring<sup>5</sup> each method can have either 0 or 1. If a feature
 ![alt text](https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png "See 'Encoding examples.ipynb' in the repo")
 *https://raw.githubusercontent.com/rasmus-bn/Investigation-Reporting-Blog/master/images/Binary%20scoring.png - A screenshot from 'Encoding examples.ipynb' in the blog repo*
 
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
 
 The limit of this method is that it does not take into account the number of occurences of the words. These 2 sentences would equal eachother if encoded with the binary scoring method: "It really was a good movie", "It was a really, really good movie".
@@ -90,9 +79,6 @@ Encoding the text data is only a small step of building the classification model
 
 We used TF-IDF in our machine learning exam project and we managed to get a prediction accuracy of arround 80%. However this result was not credited alone to TF-IDF as many other factors were in place.
 
-<br/>
-<br/>
-<br/>
 
 ## References
 1. Wikipedia on Global Internet usage (last read on 10/12-19): https://en.wikipedia.org/wiki/Global_Internet_usage
